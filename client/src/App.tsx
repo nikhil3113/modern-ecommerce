@@ -7,6 +7,7 @@ import Products from "./pages/product/Products";
 import AddProduct from "./pages/admin/AddProduct";
 import ProductDetails from "./pages/product/ProductDetails";
 import UpdateProduct from "./pages/admin/UpdateProduct";
+import AddReview from "./pages/product/AddReview";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/details/:id"  element={<ProductDetails/>}/>
+        <Route path="/product/create-review/:productId"  element={<AddReview/>}/>
         
 
         <Route path="/admin/add" element={<AddProduct />} />

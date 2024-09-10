@@ -17,6 +17,7 @@ import { truncateDescription } from "@/lib/utils";
 import SubHeader from "@/components/SubHeader";
 import AddToCartButton from "@/components/AddToCartButton";
 
+
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useRecoilState(productState);
@@ -47,7 +48,7 @@ const Products = () => {
       <Navbar />
       <div className="">
         <SubHeader heading="Products" />
-        <div className="grid grid-cols-3 max-sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-3 my-5 gap-10 p-10">
+        <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 my-5 gap-10 p-10">
           {products.map((product) => (
             <Card
               className="flex flex-col justify-center items-center shadow-lg"
@@ -56,7 +57,7 @@ const Products = () => {
               <CardHeader>
                 <img
                   src={product.imageUrl}
-                  className="w-full h-60 rounded-lg"
+                  className="w-full max-h-60 rounded-lg"
                 />
                 <CardDescription className="text-xl flex justify-between ">
                   {product.name.charAt(0).toUpperCase() + product.name.slice(1)}

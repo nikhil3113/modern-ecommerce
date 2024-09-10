@@ -1,6 +1,8 @@
 import AddToCartButton from "@/components/AddToCartButton";
+import Comments from "@/components/Comments";
 import Navbar from "@/components/Navbar";
 import SubHeader from "@/components/SubHeader";
+import { Toaster } from "@/components/ui/toaster";
 import {
   ProductDescriptionState,
   ProductImageUrlState,
@@ -47,7 +49,7 @@ const ProductDetails = () => {
     <>
       <Navbar />
       <SubHeader heading="Details" />
-      <div className="flex mt-10 px-20 gap-10 max-sm:flex-col ">
+      <div className="flex mt-10 px-20 gap-10 flex-col xl:flex-row md:flex-col ">
         <img
           src={imageUrl}
           alt={name}
@@ -64,6 +66,10 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <div className="px-32">
+        <Comments productId={id}  />
+      </div>
+      <Toaster />
     </>
   );
 };

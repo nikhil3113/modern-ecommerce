@@ -20,8 +20,7 @@ model User {
   password String
   role     Role   @default(USER)
   cart Cart[]
-
-
+  comments Comment[]
 }
 
 model Products {
@@ -31,6 +30,7 @@ model Products {
   price       Int
   imageUrl    String
   CartItem CartItem[] @relation("ProductCartItems")
+  comments Comment[]
 }
 
 model Cart{
@@ -47,6 +47,17 @@ model CartItem{
   productId String @db.ObjectId
   product Products @relation(fields: [productId], references: [id], name: "ProductCartItems")
   quantity Int
+}
+
+model Comment {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  content String 
+  headline String
+  createdAt DateTime @default(now())  
+  user User @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+  product Products @relation(fields: [productId], references: [id])
+  productId String @db.ObjectId
 }
 
 enum Role {
