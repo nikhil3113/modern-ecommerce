@@ -11,7 +11,9 @@ const app:Express = express();
 
 app.use(express.json());
 app.use(cors())
-
+app.get("/",(req:Request,res:Response)=>{
+    res.send("Server is running")
+})
 app.use("/api/v1/user",user)
 app.use("/api/v1/product",product)
 app.use("/api/v1/admin",admin)
