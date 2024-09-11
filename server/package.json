@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && prisma generate",
     "start": "nodemon src/index.ts",
+    "build": "rimraf dist && tsc",
+    "tsc.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "postinstall": "prisma generate"
   },
+  "pre-commit": [
+    "tsc.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,7 +35,9 @@
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^22.5.4",
     "nodemon": "^3.1.4",
+    "pre-commit": "^1.2.2",
     "prisma": "^5.19.1",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
