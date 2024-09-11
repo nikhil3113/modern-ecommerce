@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="p-48 max-sm:p-16 mt-5 text-center font-semibold">
+      <div className="p-48 max-sm:p-20 mt-5 text-center font-semibold">
         <h1 className="text-7xl max-sm:text-4xl font-suse ">Ecommerce</h1>
         <p className="mt-5 mb-5 text-base">Modern Ecommerce Website with Morder UI</p>
         <Link to={"/products"} >
