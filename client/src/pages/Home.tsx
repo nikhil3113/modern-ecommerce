@@ -11,12 +11,12 @@ import { truncateDescription } from "@/lib/utils";
 import { productState } from "@/store/product";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import CardSkeleton from "@/components/CardSkeleton";
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [products, setProducts] = useRecoilState(productState);
   const [loading, setLoading] = useState(true);
   useEffect(() => {

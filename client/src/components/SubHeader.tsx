@@ -1,7 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Cart from "./Cart";
 import { useNavigate } from "react-router-dom";
-import { BreadCrumb } from "./Breadcrumb";
 
 interface SubHeaderProps {
   heading: string;
