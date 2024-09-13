@@ -14,7 +14,7 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
       amount: data.amount,
       currency: data.currency,
       name: "Ecommerce",
-      description: "checkinmg out",
+      description: "checking out",
       order_id: data.id,
       handler: async (response) => {
         try {
@@ -27,7 +27,7 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
           // alert(data.message);
           toast({
             title: "Payment successfull",
-            variant: "default",
+            variant: "success",
           });
         } catch (error) {
           console.log(error);

@@ -7,7 +7,7 @@ import { z } from "zod";
 import FormFields from "@/components/FormFields";
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 const formSchema = z.object({
@@ -87,6 +87,7 @@ const Signup = () => {
             />
 
             <Button type="submit">Submit</Button>
+            <p>Already Have an account? <Link to="/login" className="text-blue-500 hover:underline">Login</Link></p>
           </form>
         </Form>
       </div>
