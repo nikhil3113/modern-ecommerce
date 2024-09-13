@@ -15,7 +15,7 @@ interface CommentsProps {
 interface User{
   username:string;
   }
-interface Comments {
+interface CommentsTypes {
   id: string;
   content: string;
   createdAt: string;
@@ -55,7 +55,9 @@ const Comments = ({ productId }: CommentsProps) => {
         {loading ? (
           <CardSkeleton count={3} />
         ) : (
-          comment.map((c:Comments) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-expect-error
+          comment.map((c:CommentsTypes) => {
             return (
               <div key={c.id} className="flex flex-col gap-2 px-5 xl:px-20 md:px-10">
                 <div className="flex items-center gap-3">

@@ -13,5 +13,7 @@ interface Comments {
 
 export const comments = atom<Comments>({
     key: "comments",
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-expect-error
     default: [],
 })

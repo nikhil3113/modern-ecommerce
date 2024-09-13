@@ -7,7 +7,7 @@ import { z } from "zod";
 import FormFields from "@/components/FormFields";
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 const UpdateProduct = () => {
   const { toast } = useToast();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState<string>("");
   const {id} = useParams();
 
