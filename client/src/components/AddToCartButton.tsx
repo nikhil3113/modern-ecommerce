@@ -6,11 +6,14 @@ import { userId } from "@/store/user";
 import { itemsState } from "@/store/cart";
 import { Button } from "./ui/button";
 import { ShoppingBag } from "lucide-react";
+interface AddToCartButtonProps {
+id: string | undefined | number;
+}
 
-const AddToCartButton = ({id}:{id:string | number}) => {
+const AddToCartButton = ({id}:AddToCartButtonProps) => {
   const user_id = useRecoilValue(userId);
   const setCartItems = useSetRecoilState(itemsState);
-  const handleAddToCard = (productId: number | string) => {
+  const handleAddToCard = (productId: string | undefined | number) => {
     axios
       .post(
         `${import.meta.env.VITE_SERVER_URL}/cart/add`,

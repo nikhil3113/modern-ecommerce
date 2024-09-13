@@ -20,7 +20,7 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
         try {
           const verifyUrl = import.meta.env.VITE_SERVER_URL + "/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
-          if(data.message == "Payment Verified"){
+          if (data.message == "Payment Verified") {
             clearCart();
           }
           // console.log(data);
