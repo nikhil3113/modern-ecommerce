@@ -6,9 +6,14 @@ interface PaymentProps {
   amount: number;
   clearCart: () => void;
 }
+interface PaymentData {
+  amount: number;
+  currency: string;
+  id: string;
+}
 
 const Payment = ({ amount, clearCart }: PaymentProps) => {
-  const initPayment = (data) => {
+  const initPayment = (data: PaymentData) => {
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: data.amount,
@@ -16,7 +21,7 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
       name: "Ecommerce",
       description: "checking out",
       order_id: data.id,
-      handler: async (response) => {
+      handler: async (response: ResponseType) => {
         try {
           const verifyUrl = import.meta.env.VITE_SERVER_URL + "/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
@@ -51,7 +56,8 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const rzp1 = new window.Razorpay(options);
-    rzp1.on("payment.failed", function (response) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rzp1.on("payment.failed", function (response:any) {
       console.log(response.error);
     });
     rzp1.open();
