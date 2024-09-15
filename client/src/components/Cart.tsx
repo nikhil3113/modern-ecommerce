@@ -44,6 +44,7 @@ function Cart() {
         // console.log(res.data);
         user_Id(res.data.userId);
         setCartItems(res.data.items);
+        // console.log(cartItems)
       })
       .catch((err) => {
         console.error(err.response.data);
@@ -115,7 +116,43 @@ function Cart() {
   };
 
   const clearCart = () => {
-    setCartItems([]);
+    axios
+      .delete(`${import.meta.env.VITE_SERVER_URL}/cart/clear`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then(() => {
+        setCartItems([]);
+      })
+      .catch((err) => {
+        console.error("Failed to clear cart", err.response?.data);
+      });
+  };
+
+  const handleOrders = async (
+    amount: string | number,
+    cartId: string | number
+  ) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/order`,
+        {
+          amount,
+          cartId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log("Order created:", response.data);
+      console.log(cartId, amount);
+      clearCart();
+    } catch (err) {
+      console.error("Error creating order:", err);
+    }
   };
   return (
     <Dialog>
@@ -186,7 +223,12 @@ function Cart() {
         </div>
         <DialogFooter>
           {cartItems.length > 0 && (
-            <Payment amount={calculateTotal(cartItems)} clearCart={clearCart} />
+            <Payment
+              amount={calculateTotal(cartItems)}
+              onPaymentSuccess={() =>
+                handleOrders(calculateTotal(cartItems), cartItems[0]?.cartId)
+              }
+            />
           )}
         </DialogFooter>
       </DialogContent>

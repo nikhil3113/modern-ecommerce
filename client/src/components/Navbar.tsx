@@ -28,17 +28,20 @@ const Navbar = () => {
       <div className="flex items-center space-x-8 ">
         <TooltipProvider>
           {token ? (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ArrowLeftToLine
-                  onClick={handleLogout}
-                  className="cursor-pointer"
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="text-center">Logout</p>
-              </TooltipContent>
-            </Tooltip>
+            <div className="flex justify-center items-center gap-8">
+              <Link to={"/orders"} className="text-xl font-semibold">Orders</Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <ArrowLeftToLine
+                    onClick={handleLogout}
+                    className="cursor-pointer"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-center">Logout</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           ) : (
             <Tooltip>
               <TooltipTrigger asChild>

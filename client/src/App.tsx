@@ -8,6 +8,7 @@ import AddProduct from "./pages/admin/AddProduct";
 import ProductDetails from "./pages/product/ProductDetails";
 import UpdateProduct from "./pages/admin/UpdateProduct";
 import AddReview from "./pages/product/AddReview";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/details/:id"  element={<ProductDetails/>}/>
         <Route path="/product/create-review/:productId"  element={<AddReview/>}/>
+        <Route path="/orders" element={<Orders />} />
         
 
         <Route path="/admin/add" element={<AddProduct />} />

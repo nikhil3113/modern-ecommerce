@@ -8,6 +8,7 @@ interface CartItemProps {
       imageUrl: string;
     };
     quantity: number;
+    cartId: string
   }
   
 export const itemsState = atom<CartItemProps[]>({

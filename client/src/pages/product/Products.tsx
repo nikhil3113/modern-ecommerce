@@ -66,9 +66,11 @@ const Products = () => {
                     className="w-full max-h-60 rounded-lg"
                   />
                   <CardDescription className="text-xl flex justify-between ">
-                    {product.name.charAt(0).toUpperCase() +
-                      product.name.slice(1)}
-                    <p className="text-xl font-semibold">{product.price} ₹</p>
+                    <p className="font-bold text-xl">
+                      {product.name.charAt(0).toUpperCase() +
+                        product.name.slice(1)}
+                    </p>
+                    <p className="text-xl font-bold">{product.price} ₹</p>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

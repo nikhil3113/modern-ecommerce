@@ -8,5 +8,6 @@ router.get("/",auth.userAuth, cartController.viewCart)
 router.post("/add", auth.userAuth, cartController.addToCart)
 router.put("/update", auth.userAuth, cartController.updateCardItem)
 router.delete("/delete", auth.userAuth, cartController.deleteCartItem)
+router.delete("/clear", auth.userAuth, cartController.clearCart)
 
 export default router;

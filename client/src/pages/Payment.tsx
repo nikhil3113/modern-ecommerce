@@ -4,7 +4,7 @@ import axios from "axios";
 
 interface PaymentProps {
   amount: number;
-  clearCart: () => void;
+  onPaymentSuccess: () => void;
 }
 interface PaymentData {
   amount: number;
@@ -12,7 +12,7 @@ interface PaymentData {
   id: string;
 }
 
-const Payment = ({ amount, clearCart }: PaymentProps) => {
+const Payment = ({ amount, onPaymentSuccess }: PaymentProps) => {
   const initPayment = (data: PaymentData) => {
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -25,8 +25,9 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
         try {
           const verifyUrl = import.meta.env.VITE_SERVER_URL + "/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
+          console.log(response);
           if (data.message == "Payment Verified") {
-            clearCart();
+            onPaymentSuccess();
           }
           // console.log(data);
           // alert(data.message);
@@ -57,7 +58,7 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
     // @ts-ignore
     const rzp1 = new window.Razorpay(options);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    rzp1.on("payment.failed", function (response:any) {
+    rzp1.on("payment.failed", function (response: any) {
       console.log(response.error);
     });
     rzp1.open();
@@ -67,7 +68,9 @@ const Payment = ({ amount, clearCart }: PaymentProps) => {
     try {
       const orderUrl = import.meta.env.VITE_SERVER_URL + "/payment/order";
       const { data } = await axios.post(orderUrl, { amount });
+
       initPayment(data.data);
+      console.log(data);
     } catch (error) {
       console.log(error);
       toast({
