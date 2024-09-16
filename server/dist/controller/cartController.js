@@ -150,5 +150,27 @@ const cartController = {
             }
         });
     },
+    clearCart(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a;
+            try {
+                const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.userId;
+                if (!userId) {
+                    return res.status(400).json({ message: "Not Authorized" });
+                }
+                yield prisma_1.default.cartItem.deleteMany({
+                    where: {
+                        cart: {
+                            userId
+                        }
+                    }
+                });
+                res.status(200).json({ message: "Cart cleared successfully" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        });
+    }
 };
 exports.default = cartController;

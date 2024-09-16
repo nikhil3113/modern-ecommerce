@@ -11,4 +11,5 @@ router.get("/", auth_1.default.userAuth, cartController_1.default.viewCart);
 router.post("/add", auth_1.default.userAuth, cartController_1.default.addToCart);
 router.put("/update", auth_1.default.userAuth, cartController_1.default.updateCardItem);
 router.delete("/delete", auth_1.default.userAuth, cartController_1.default.deleteCartItem);
+router.delete("/clear", auth_1.default.userAuth, cartController_1.default.clearCart);
 exports.default = router;

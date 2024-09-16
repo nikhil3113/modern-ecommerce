@@ -7,7 +7,7 @@ import OrderController from "../controller/ordersController";
 
 const router = express.Router();
 
-router.get("/get", auth.userAuth,OrderController.getOrdersByUser);
+router.get("/", auth.userAuth,OrderController.getOrdersByUser);
 router.post("/",auth.userAuth, OrderController.createOrder)
 
 export default router
