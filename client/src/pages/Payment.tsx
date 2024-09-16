@@ -25,7 +25,7 @@ const Payment = ({ amount, onPaymentSuccess }: PaymentProps) => {
         try {
           const verifyUrl = import.meta.env.VITE_SERVER_URL + "/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
-          console.log(response);
+          // console.log(response);
           if (data.message == "Payment Verified") {
             onPaymentSuccess();
           }
@@ -70,7 +70,7 @@ const Payment = ({ amount, onPaymentSuccess }: PaymentProps) => {
       const { data } = await axios.post(orderUrl, { amount });
 
       initPayment(data.data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
       toast({
