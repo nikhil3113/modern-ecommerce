@@ -37,7 +37,7 @@ function Cart() {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/cart`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
         },
       })
       .then((res) => {
@@ -55,7 +55,7 @@ function Cart() {
     axios
       .delete(`${import.meta.env.VITE_SERVER_URL}/cart/delete`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
         },
         data: {
           cartItemId: id,
@@ -88,7 +88,7 @@ function Cart() {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
           },
         }
       )
@@ -119,7 +119,7 @@ function Cart() {
     axios
       .delete(`${import.meta.env.VITE_SERVER_URL}/cart/clear`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
         },
       })
       .then(() => {
@@ -143,7 +143,7 @@ function Cart() {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
           },
         }
       );

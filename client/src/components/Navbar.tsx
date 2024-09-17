@@ -9,10 +9,11 @@ import {
 import { Tooltip } from "./ui/tooltip";
 
 const Navbar = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem(import.meta.env.VITE_USER_TOKEN);
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem(import.meta.env.VITE_USER_TOKEN);
+    localStorage.removeItem(import.meta.env.VITE_ADMIN_TOKEN);
     navigate("/");
   };
   return (

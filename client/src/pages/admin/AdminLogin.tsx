@@ -19,7 +19,7 @@ const formSchema = z.object({
   }),
 });
 
-const Login = () => {
+const AdminLogin = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -32,9 +32,9 @@ const Login = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     axios
-      .post(`${import.meta.env.VITE_SERVER_URL}/user/login`, values)
+      .post(`${import.meta.env.VITE_SERVER_URL}/admin/login`, values)
       .then((res) => {
-        localStorage.setItem(`${import.meta.env.VITE_USER_TOKEN}`, `${res.data.token}`);
+        localStorage.setItem(`${import.meta.env.VITE_ADMIN_TOKEN}`, `${res.data.token}`);
         navigate("/");
       })
       .catch((err) => {
@@ -50,7 +50,7 @@ const Login = () => {
     <>
       <Navbar />
       <div className="flex flex-col justify-center items-center mt-20">
-        <h1 className="text-3xl font-semibold mb-10">Login</h1>
+        <h1 className="text-3xl font-semibold mb-10">AdminLogin</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -80,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

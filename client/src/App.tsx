@@ -9,6 +9,7 @@ import ProductDetails from "./pages/product/ProductDetails";
 import UpdateProduct from "./pages/admin/UpdateProduct";
 import AddReview from "./pages/product/AddReview";
 import Orders from "./pages/Orders";
+import AdminLogin from "./pages/admin/AdminLogin";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         
 
+        <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/add" element={<AddProduct />} />
         <Route path="/admin/update/:id" element={<UpdateProduct/>} />
       </Routes>

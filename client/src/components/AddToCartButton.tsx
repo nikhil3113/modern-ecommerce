@@ -24,7 +24,7 @@ const AddToCartButton = ({id}:AddToCartButtonProps) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
           },
         }
       )
@@ -32,7 +32,7 @@ const AddToCartButton = ({id}:AddToCartButtonProps) => {
         axios
           .get(`${import.meta.env.VITE_SERVER_URL}/cart`, {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
             },
           })
           .then((res) => {

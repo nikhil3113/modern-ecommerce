@@ -27,7 +27,7 @@ const Products = () => {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/product`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
         },
       })
       .then((res) => {

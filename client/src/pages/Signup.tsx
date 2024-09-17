@@ -39,7 +39,7 @@ const Signup = () => {
     axios
       .post(`${import.meta.env.VITE_SERVER_URL}/user/signup`, values)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem(import.meta.env.VITE_USER_TOKEN, res.data.token);
         navigate("/");
         toast({
           title: res.data.message,

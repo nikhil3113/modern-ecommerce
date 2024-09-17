@@ -23,7 +23,7 @@ const Orders = () => {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/order`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem(import.meta.env.VITE_USER_TOKEN)}`,
         },
       })
       .then((res) => {
