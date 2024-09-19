@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ModeToggle } from "./mode-toggle";
-import { ArrowLeftToLine, LogInIcon } from "lucide-react";
+import { ArrowLeftToLine, LogInIcon, ShoppingCart } from "lucide-react";
 import {
   TooltipContent,
   TooltipProvider,
@@ -31,13 +31,23 @@ const Navbar = () => {
         <TooltipProvider>
           {token ? (
             <div className="flex justify-center items-center gap-5">
-              <Link to={"/orders"} className="text-xl font-semibold">Orders</Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link to={"/orders"} className="text-xl font-semibold">
+                    <ShoppingCart size={28} />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-center">Orders</p>
+                </TooltipContent>
+              </Tooltip>
               <UserDetails />
               <Tooltip>
                 <TooltipTrigger asChild>
                   <ArrowLeftToLine
                     onClick={handleLogout}
                     className="cursor-pointer"
+                    size={28} 
                   />
                 </TooltipTrigger>
                 <TooltipContent>

@@ -16,6 +16,11 @@ import { useEffect, useState } from "react";
 import { toast } from "./hooks/use-toast";
 import { Toaster } from "./ui/toaster";
 import { User } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@radix-ui/react-tooltip";
 
 function UserDetails() {
   const [username, setUsername] = useState<string>("");
@@ -65,8 +70,15 @@ function UserDetails() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className="ml-4 rounded-2xl border dark:border-white  p-[5px]">
-          <User className="cursor-pointer " />
+        <div className="ml-4 rounded-2xl p-[5px]">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <User className="cursor-pointer " size={28} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-center mb-1">Profile</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </SheetTrigger>
       <SheetContent>
