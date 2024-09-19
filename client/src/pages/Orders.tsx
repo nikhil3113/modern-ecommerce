@@ -47,7 +47,7 @@ const Orders = () => {
           orders.map((order) => (
             <Card key={order.id} className="shadow-lg font-semibold">
               <CardHeader>Order id: {order.id}</CardHeader>
-              <CardContent>Amount: {order.totalAmount}</CardContent>
+              <CardContent>Amount: {order.totalAmount} ₹</CardContent>
               <CardFooter className="flex justify-between">
                 <p>
                   {new Date(order.createdAt).toLocaleDateString("en-GB", {
