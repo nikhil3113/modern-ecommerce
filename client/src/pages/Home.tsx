@@ -43,7 +43,7 @@ const Home = () => {
     <>
       <Navbar />
       <div className="p-48 max-sm:p-20 max-sm:py-48 mt-5 text-center font-semibold">
-        <h1 className="text-7xl max-sm:text-5xl font-suse ">Ecommerce</h1>
+        <h1 className="text-7xl max-sm:text-5xl font-suse ">Modern Mart</h1>
         <p className="mt-5 mb-5 text-base">
           Modern Ecommerce Website with Morder UI
         </p>
@@ -56,7 +56,7 @@ const Home = () => {
 
       <div>
         <h1 className="text-5xl font-suse pl-16 mt-52 font-semibold max-sm:text-4xl">
-          Our Products
+          Products
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 my-5 gap-10 p-10">
