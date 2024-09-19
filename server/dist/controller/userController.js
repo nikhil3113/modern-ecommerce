@@ -80,6 +80,30 @@ const userController = {
                 res.status(500).json({ error: "Internal Server Error" });
             }
         });
+    },
+    UserDetails(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a;
+            try {
+                const id = (_a = req.user) === null || _a === void 0 ? void 0 : _a.userId;
+                if (!id) {
+                    return res.status(400).json({ message: "Not Authorized" });
+                }
+                const user = yield prisma_1.default.user.findUnique({
+                    where: {
+                        id
+                    },
+                    select: {
+                        username: true,
+                        email: true
+                    }
+                });
+                res.status(200).json({ user });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        });
     }
 };
 exports.default = userController;

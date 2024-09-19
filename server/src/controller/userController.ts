@@ -72,6 +72,27 @@ const userController = {
             console.log(error)
             res.status(500).json({error:"Internal Server Error"});
         }
+    },
+    async UserDetails(req:Request, res:Response){
+        try {
+            const id = req.user?.userId;
+            if(!id){
+                return res.status(400).json({message:"Not Authorized"});
+            }
+            const user = await prisma.user.findUnique({
+                where:{
+                    id
+                },
+                select:{
+                    username:true,
+                    email:true
+                }
+            })
+            
+            res.status(200).json({user});
+        } catch (error) {
+            res.status(500).json({error:"Internal Server Error"});
+        }
     }
 }
 
