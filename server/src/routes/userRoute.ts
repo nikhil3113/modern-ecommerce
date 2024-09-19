@@ -7,5 +7,6 @@ const router = express.Router();
 router.post("/signup",userController.signup);
 router.post("/login",userController.login);
 router.get("/",auth.userAuth, userController.UserDetails);
+router.put("/update", auth.userAuth, userController.Update)
 
 export default router

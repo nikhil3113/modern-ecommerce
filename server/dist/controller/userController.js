@@ -104,6 +104,33 @@ const userController = {
                 res.status(500).json({ error: "Internal Server Error" });
             }
         });
+    },
+    Update(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a;
+            try {
+                const id = (_a = req.user) === null || _a === void 0 ? void 0 : _a.userId;
+                const { username } = req.body;
+                if (!id) {
+                    return res.status(400).json({ message: "Not Authorized" });
+                }
+                if (!username) {
+                    return res.status(400).json({ message: "Missing required fields" });
+                }
+                yield prisma_1.default.user.update({
+                    where: {
+                        id
+                    },
+                    data: {
+                        username
+                    }
+                });
+                res.status(200).json({ message: "User updated successfully" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        });
     }
 };
 exports.default = userController;

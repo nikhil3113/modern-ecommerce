@@ -10,4 +10,5 @@ const router = express_1.default.Router();
 router.post("/signup", userController_1.default.signup);
 router.post("/login", userController_1.default.login);
 router.get("/", auth_1.default.userAuth, userController_1.default.UserDetails);
+router.put("/update", auth_1.default.userAuth, userController_1.default.Update);
 exports.default = router;
