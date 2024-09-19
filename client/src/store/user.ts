@@ -10,3 +10,4 @@ export const userAuth = atom({
     key: "userAuth",
     default: false,
 })
+

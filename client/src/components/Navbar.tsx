@@ -7,6 +7,7 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import { Tooltip } from "./ui/tooltip";
+import UserDetails from "./UserDetails";
 
 const Navbar = () => {
   const token = localStorage.getItem(import.meta.env.VITE_USER_TOKEN);
@@ -29,8 +30,9 @@ const Navbar = () => {
       <div className="flex items-center space-x-8 ">
         <TooltipProvider>
           {token ? (
-            <div className="flex justify-center items-center gap-8">
+            <div className="flex justify-center items-center gap-5">
               <Link to={"/orders"} className="text-xl font-semibold">Orders</Link>
+              <UserDetails />
               <Tooltip>
                 <TooltipTrigger asChild>
                   <ArrowLeftToLine
@@ -51,7 +53,7 @@ const Navbar = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-center">Logout</p>
+                <p className="text-center">Login</p>
               </TooltipContent>
             </Tooltip>
           )}

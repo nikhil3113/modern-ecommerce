@@ -98,6 +98,26 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      <div>
+        <h1 className="text-5xl font-suse pl-16 mt-52 font-semibold max-sm:text-4xl">
+          Features
+        </h1>
+        <div className="flex flex-col xl:flex-row md:flex-row md:px-10 justify-center items-center my-10">
+          <div className="xl:w-[60%] w-[80%] flex flex-col gap-7">
+            <h1 className="font-semibold text-3xl">Razorpay Gateway</h1>
+            <p className="xl:w-[70%]" >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+              vestibulum ac magna in ornare. In bibendum aliquet turpis, ac
+              fermentum arcu accumsan vitae. Etiam sit amet sem arcu. Quisque et
+              libero libero. Ut nec dui sed nisi mattis molestie sed eu mi.
+              Mauris nec rhoncus augue, faucibus tincidunt quam. In quis massa
+              nec ligula dignissim rutrum eget sed dolor.{" "}
+            </p>
+          </div>
+          <img src="/images/razorpay.png"  className="w-80" alt="" />  
+        </div>
+      </div>
     </>
   );
 };
