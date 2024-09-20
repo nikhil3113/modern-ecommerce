@@ -17,12 +17,13 @@ import { truncateDescription } from "@/lib/utils";
 import SubHeader from "@/components/SubHeader";
 import AddToCartButton from "@/components/AddToCartButton";
 import CardSkeleton from "@/components/CardSkeleton";
+import { Pencil, SquarePlus } from "lucide-react";
 
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useRecoilState(productState);
   const [loading, setLoading] = useState(true);
-
+  const admin = localStorage.getItem(import.meta.env.VITE_ADMIN_TOKEN) ;
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_SERVER_URL}/product`, {
@@ -51,6 +52,12 @@ const Products = () => {
       <Navbar />
       <div className="">
         <SubHeader heading="Products" />
+        {admin!=null && (
+          <div className="flex px-16 mt-2">
+            <Link to="/admin/add">
+             <SquarePlus color="red" size={32}/>
+            </Link>
+          </div>)}
         <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 my-5 gap-10 p-10">
           {loading ? (
             <CardSkeleton count={3} />
@@ -65,11 +72,16 @@ const Products = () => {
                     src={product.imageUrl}
                     className="w-full max-h-60 rounded-lg"
                   />
-                  <CardDescription className="text-xl flex justify-between ">
+                  <CardDescription className="text-xl flex justify-between items-center ">
                     <p className="font-bold text-xl">
                       {product.name.charAt(0).toUpperCase() +
                         product.name.slice(1)}
                     </p>
+                    {admin!=null && (
+                      <Link to={`/admin/update/${product.id}`}>
+                        <Pencil size={20} color="green" />
+                      </Link>
+                    )}
                     <p className="text-xl font-bold">{product.price} ₹</p>
                   </CardDescription>
                 </CardHeader>

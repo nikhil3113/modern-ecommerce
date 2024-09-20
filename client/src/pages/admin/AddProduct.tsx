@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,6 +30,12 @@ const AddProduct = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState<string>("");
+
+  useEffect(()=>{
+    if(!localStorage.getItem(import.meta.env.VITE_ADMIN_TOKEN)){
+      navigate("/");
+    }
+  })
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -70,9 +76,8 @@ const AddProduct = () => {
     const productData = { ...values, imageUrl };
     axios
       .post(`${import.meta.env.VITE_SERVER_URL}/product/add`, productData)
-      .then((res) => {
-        localStorage.setItem("token", `${res.data.token}`);
-        navigate("/");
+      .then(() => {
+       navigate("/products");
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -87,8 +92,8 @@ const AddProduct = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col justify-center items-center mt-10">
-        <h1 className="text-3xl font-semibold mb-5">AddProduct</h1>
+      <div className="flex flex-col justify-center items-center mt-8">
+        <h1 className="text-3xl font-semibold mb-5">Add Product</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}

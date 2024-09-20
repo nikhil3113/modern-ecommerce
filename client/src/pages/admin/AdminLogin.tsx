@@ -50,7 +50,7 @@ const AdminLogin = () => {
     <>
       <Navbar />
       <div className="flex flex-col justify-center items-center mt-20">
-        <h1 className="text-3xl font-semibold mb-10">AdminLogin</h1>
+        <h1 className="text-3xl font-semibold mb-10">Admin Login</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}

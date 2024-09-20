@@ -7,7 +7,7 @@ import { z } from "zod";
 import FormFields from "@/components/FormFields";
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster";
-import {  useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
@@ -28,11 +28,14 @@ const formSchema = z.object({
 
 const UpdateProduct = () => {
   const { toast } = useToast();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState<string>("");
   const {id} = useParams();
 
   useEffect(()=>{
+    if(!localStorage.getItem(import.meta.env.VITE_ADMIN_TOKEN)){
+      navigate("/");
+    }
     axios.get(`${import.meta.env.VITE_SERVER_URL}/product/details/${id}`)
     .then((res)=>{
       form.setValue("name", res.data.product.name);
