@@ -70,10 +70,10 @@ function UserDetails() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className="ml-4 rounded-2xl p-[5px]">
+        <div className=" rounded-2xl p-[5px]">
           <Tooltip>
             <TooltipTrigger asChild>
-              <User className="cursor-pointer " size={28} />
+              <User className="cursor-pointer " size={20} />
             </TooltipTrigger>
             <TooltipContent>
               <p className="text-center mb-1">Profile</p>
@@ -96,7 +96,7 @@ function UserDetails() {
             <Input
               id="email"
               value={email}
-              className="col-span-3 bg-gray-900"
+              className="col-span-3 "
               readOnly
             />
           </div>

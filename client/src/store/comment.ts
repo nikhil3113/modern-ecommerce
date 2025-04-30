@@ -1,19 +1,18 @@
 import { atom } from "recoil";
-interface User{
-    username:string;
-    }
-interface Comments {
+
+interface User {
+    username: string;
+}
+
+interface Comment {
     id: string;
     content: string;
     createdAt: string;
     headline: string;
-    user: User
+    user: User;
 }
 
-
-export const comments = atom<Comments>({
+export const comments = atom<Comment[]>({
     key: "comments",
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error
     default: [],
-})
+});
